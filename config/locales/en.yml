@@ -1,0 +1,23 @@
+en:
+  action_column: Actions
+  confirm_delete_named: "Really delete '%{name}'?"
+  time_ago: "%{time} ago"
+  buttons:
+    create_model: "Create %{model}"
+    save: "Save"
+    edit: "Edit"
+    delete: "Delete"
+    inverter_readings: "All Readings"
+  flashs:
+    created_model: "%{model} was created."
+    updated_model: "%{model} was updated."
+    destroyed_model: "%{model} was deleted."
+  titles:
+    brand: Fuel Cost Management
+    new_model: "New %{model}"
+    edit_model: "Edit %{model}"
+    destroy_model: "Delete %{model}"
+    readings_for_inverter: "Readings for %{inverter}"
+  activerecord:
+    models: {}
+    attributes:{}

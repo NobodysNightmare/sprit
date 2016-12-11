@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  username: root
+
+development:
+  <<: *default
+  database: sprit_development
+
+test:
+  <<: *default
+  database: sprit_test
+
+production:
+  adapter: mysql2
+  database: sprit
+  username: "<%= ENV["SQL_USER"] %>"
+  password: "<%= ENV["SQL_PASSWORD"] %>"
