@@ -1,1 +1,18 @@
-This is a stub!
+%h1= FuelLog.model_name.human(count: 2)
+
+%table.table
+  %thead
+    %tr
+      %th= FuelLog.human_attribute_name(:time)
+      %th= FuelLog.human_attribute_name(:distance)
+      %th= FuelLog.human_attribute_name(:fuel_used)
+      %th= FuelLog.human_attribute_name(:fuel_price)
+
+  - @logs.each do |log|
+    %tr
+      %td= l(log.time)
+      %td= "#{log.distance} km"
+      %td= "#{log.fuel_used} L"
+      %td= "#{log.fuel_price} €"
+
+= paginate(@logs)

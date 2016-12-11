@@ -19,7 +19,7 @@ class CarsController < ApplicationController
       flash[:success] = I18n.t('flashs.created_model',
                                model: Car.model_name.human)
     else
-      flash_errors(car.errors)
+      helpers.flash_errors(car.errors)
     end
     redirect_to action: :index
   end
@@ -30,7 +30,7 @@ class CarsController < ApplicationController
       flash[:success] = I18n.t('flashs.updated_model',
                                model: Car.model_name.human)
     else
-      flash_errors(car.errors)
+      helpers.flash_errors(car.errors)
     end
 
     redirect_to action: :index

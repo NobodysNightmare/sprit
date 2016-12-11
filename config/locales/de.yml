@@ -28,4 +28,10 @@ de:
       service_log:
         one: Service-Eintrag
         other: Service-Einträge
-    attributes: {}
+    attributes:
+      fuel_log:
+        car_id: Fahrzeug
+        distance: Distanz
+        fuel_price: Spritpreis
+        fuel_used: Spritverbrauch
+        time: Zeit
