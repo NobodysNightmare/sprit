@@ -18,5 +18,14 @@ de:
     edit_model: "%{model} bearbeiten"
     destroy_model: "%{model} löschen"
   activerecord:
-    models: {}
+    models:
+      car:
+        one: Fahrzeug
+        other: Fahrzeuge
+      fuel_log:
+        one: Tankeintrag
+        other: Tankeinträge
+      service_log:
+        one: Service-Eintrag
+        other: Service-Einträge
     attributes: {}

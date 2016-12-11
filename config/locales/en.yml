@@ -19,5 +19,14 @@ en:
     destroy_model: "Delete %{model}"
     readings_for_inverter: "Readings for %{inverter}"
   activerecord:
-    models: {}
-    attributes:{}
+    models:
+      car:
+        one: Car
+        other: Cars
+      fuel_log:
+        one: Fuel Log
+        other: Fuel Logs
+      service_log:
+        one: Service Log
+        other: Service Logs
+    attributes: {}
