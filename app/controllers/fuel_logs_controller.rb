@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class FuelLogsController < ApplicationController
-  HTML_DATETIME_LOCAL = '%Y-%m-%dT%H:%M:%S'
+  HTML_DATETIME_LOCAL = '%Y-%m-%dT%H:%M:00'
 
   def new
     @default_time = Time.now.strftime(HTML_DATETIME_LOCAL)
