@@ -19,7 +19,7 @@ namespace :legacy_import do
                       fuel_price: entry['FuelPrice'],
                       distance: entry['DistanceDriven'],
                       fuel_used: entry['FuelUsed'],
-                      time: Date.parse(entry['Date']))
+                      time: Time.parse(entry['Date']))
     end
 
     service_entries.each do |entry|
@@ -27,7 +27,7 @@ namespace :legacy_import do
                       cost: entry['Cost'],
                       total_distance: entry['TotalDistance'],
                       description: entry['Description'],
-                      time: Date.parse(entry['Date']))
+                      time: Time.parse(entry['Date']))
     end
   end
 end
