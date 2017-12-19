@@ -1,0 +1,37 @@
+%h1= t('.title', car: @statistics.car.name)
+
+.row
+  .col-md-6.col-sm-12
+    .panel.panel-default
+      .panel-heading
+        = t('.totals_title')
+      .panel-body
+        %dl
+          %dt= t('.distance')
+          %dd= "#{human_number @statistics.logged_distance} km"
+          %dt= t('.cost')
+          %dd= "#{human_number @statistics.logged_cost} €"
+          %dt= t('.consumption')
+          %dd= "#{human_number @statistics.logged_consumption} l"
+          %dt= t('.duration')
+          %dd= "#{human_number @statistics.logging_duration} days"
+    .panel.panel-default
+      .panel-heading
+        = t('.by_distance_title')
+      .panel-body
+        %dl
+          %dt= t('.cost')
+          %dd= "#{human_number(@statistics.cost_per_km * 100)} ct/km"
+          %dt= t('.consumption')
+          %dd= "#{human_number(@statistics.consumption_per_km * 100)} l/100 km"
+    .panel.panel-default
+      .panel-heading
+        = t('.by_time_title')
+      .panel-body
+        %dl
+          %dt= t('.cost')
+          %dd= "#{human_number(@statistics.cost_per_day * 365)} €/a"
+          %dt= t('.consumption')
+          %dd= "#{human_number(@statistics.consumption_per_day * 365)} l/a"
+          %dt= t('.distance')
+          %dd= "#{human_number(@statistics.distance_per_day * 365)} km/a"

@@ -2,7 +2,12 @@
 Rails.application.routes.draw do
   root 'fuel_logs#new'
 
-  resources :cars, only: [:new, :create, :edit, :update, :index, :destroy]
+  resources :cars, only: [:new, :create, :edit, :update, :index, :destroy] do
+    member do
+      get 'summary'
+    end
+  end
+
   resources :fuel_logs, only: [:new, :create, :index]
   resources :service_logs, only: [:new, :create, :index]
 

@@ -43,6 +43,11 @@ class CarsController < ApplicationController
     redirect_to action: :index
   end
 
+  def summary
+    car = Car.includes(:fuel_logs).find(params[:id])
+    @statistics = CarSummary.new(car)
+  end
+
   private
 
   def car_params

@@ -12,8 +12,10 @@
       %td
         %a.btn.btn-default{href: edit_car_path(car)}
           = I18n.t('buttons.edit')
+        %a.btn.btn-primary{href: summary_car_path(car)}
+          = t('.summary')
 
 .row
   .col-md-2
-    %a.btn.btn-primary{href: new_car_path}
+    %a.btn.btn-success{href: new_car_path}
       = I18n.t('buttons.create_model', model: Car.model_name.human)

@@ -1,0 +1,13 @@
+en:
+  cars:
+    index:
+      summary_button: "Summaryyy"
+    summary:
+      by_distance_title: "Averages (by distance)"
+      by_time_title: "Averages (by time)"
+      consumption: "Consumption"
+      cost: "Cost"
+      distance: "Distance"
+      duration: "Duration"
+      title: "%{car} - Summary"
+      totals_title: "Total Values"
