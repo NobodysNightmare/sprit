@@ -6,13 +6,17 @@
       %th= FuelLog.human_attribute_name(:time)
       %th= FuelLog.human_attribute_name(:distance)
       %th= FuelLog.human_attribute_name(:fuel_used)
+      %th= FuelLog.human_attribute_name(:consumption)
       %th= FuelLog.human_attribute_name(:fuel_price)
+      %th= FuelLog.human_attribute_name(:total_price)
 
   - @logs.each do |log|
     %tr
       %td= l(log.time)
-      %td= "#{log.distance} km"
-      %td= "#{log.fuel_used} L"
-      %td= "#{log.fuel_price} €"
+      %td= "#{human_number log.distance} km"
+      %td= "#{human_number log.fuel_used} L"
+      %td= "#{human_number(log.consumption * 100)} L/100km"
+      %td= "#{human_number log.fuel_price} €/L"
+      %td= "#{human_number log.total_price} €"
 
 = paginate(@logs)

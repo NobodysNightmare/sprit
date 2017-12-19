@@ -31,7 +31,9 @@ de:
     attributes:
       fuel_log:
         car_id: Fahrzeug
+        consumption: Verbrauch
         distance: Distanz
         fuel_price: Spritpreis
         fuel_used: Spritverbrauch
         time: Zeit
+        total_price: Gesamtpreis
