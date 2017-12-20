@@ -15,6 +15,9 @@
           %dd= "#{human_number @statistics.logged_consumption} l"
           %dt= t('.duration')
           %dd= "#{human_number @statistics.logging_duration} days"
+
+.row
+  .col-md-6.col-sm-12
     .panel.panel-default
       .panel-heading
         = t('.by_distance_title')
@@ -24,6 +27,8 @@
           %dd= "#{human_number(@statistics.cost_per_km * 100)} ct/km"
           %dt= t('.consumption')
           %dd= "#{human_number(@statistics.consumption_per_km * 100)} l/100 km"
+
+  .col-md-6.col-sm-12
     .panel.panel-default
       .panel-heading
         = t('.by_time_title')
