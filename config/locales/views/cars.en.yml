@@ -1,7 +1,7 @@
 en:
   cars:
     index:
-      summary_button: "Summaryyy"
+      summary_button: "Summary"
     summary:
       by_distance_title: "Averages (by distance)"
       by_time_title: "Averages (by time)"
