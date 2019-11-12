@@ -10,43 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211172022) do
+ActiveRecord::Schema.define(version: 2016_12_11_172022) do
 
-  create_table "cars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "name",                                    null: false
+  create_table "cars", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.decimal "start_distance", precision: 10, scale: 3, null: false
-    t.decimal "start_price",    precision: 10, scale: 3, null: false
-    t.date    "start_date",                              null: false
+    t.decimal "start_price", precision: 10, scale: 3, null: false
+    t.date "start_date", null: false
   end
 
-  create_table "fuel_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "time",                                null: false
-    t.decimal  "fuel_used",  precision: 10, scale: 3, null: false
-    t.decimal  "fuel_price", precision: 10, scale: 3, null: false
-    t.decimal  "distance",   precision: 10, scale: 3, null: false
-    t.integer  "car_id",                              null: false
-    t.index ["car_id"], name: "index_fuel_logs_on_car_id", using: :btree
-    t.index ["time"], name: "index_fuel_logs_on_time", using: :btree
+  create_table "fuel_logs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "time", null: false
+    t.decimal "fuel_used", precision: 10, scale: 3, null: false
+    t.decimal "fuel_price", precision: 10, scale: 3, null: false
+    t.decimal "distance", precision: 10, scale: 3, null: false
+    t.integer "car_id", null: false
+    t.index ["car_id"], name: "index_fuel_logs_on_car_id"
+    t.index ["time"], name: "index_fuel_logs_on_time"
   end
 
-  create_table "service_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "time",                                    null: false
-    t.string   "description",                             null: false
-    t.decimal  "cost",           precision: 10, scale: 3, null: false
-    t.decimal  "total_distance", precision: 10, scale: 3, null: false
-    t.integer  "car_id",                                  null: false
-    t.index ["car_id"], name: "index_service_logs_on_car_id", using: :btree
-    t.index ["time"], name: "index_service_logs_on_time", using: :btree
+  create_table "service_logs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "time", null: false
+    t.string "description", null: false
+    t.decimal "cost", precision: 10, scale: 3, null: false
+    t.decimal "total_distance", precision: 10, scale: 3, null: false
+    t.integer "car_id", null: false
+    t.index ["car_id"], name: "index_service_logs_on_car_id"
+    t.index ["time"], name: "index_service_logs_on_time"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "user_id",    limit: 100,                 null: false
-    t.string   "email",                  default: "",    null: false
-    t.string   "name",                   default: "",    null: false
-    t.boolean  "active",                 default: false, null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.index ["user_id"], name: "index_users_on_user_id", unique: true, using: :btree
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "user_id", limit: 100, null: false
+    t.string "email", default: "", null: false
+    t.string "name", default: "", null: false
+    t.boolean "active", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
   add_foreign_key "fuel_logs", "cars", on_delete: :cascade
