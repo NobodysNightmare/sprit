@@ -1,19 +1,17 @@
-default: &default
-  adapter: mysql2
-  username: root
+ default: &default
+   adapter: mysql2
+   host: "<%= ENV["SQL_HOST"] %>"
+   username: "<%= ENV["SQL_USER"] %>"
+   password: "<%= ENV["SQL_PASSWORD"] %>"
 
 development:
   <<: *default
   database: sprit_development
-  host: 127.0.0.1
 
 test:
   <<: *default
   database: sprit_test
-  host: 127.0.0.1
 
 production:
-  adapter: mysql2
+  <<: *default
   database: sprit
-  username: "<%= ENV["SQL_USER"] %>"
-  password: "<%= ENV["SQL_PASSWORD"] %>"
