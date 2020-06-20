@@ -23,9 +23,9 @@ en:
       car:
         one: Car
         other: Cars
-      fuel_log:
-        one: Fuel Log
-        other: Fuel Logs
+      car_log:
+        one: Log
+        other: Logs
       service_log:
         one: Service Log
         other: Service Logs

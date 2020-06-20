@@ -1,0 +1,5 @@
+de:
+  car_logs:
+    index:
+      consumption: "Verbrauch/km"
+      cost_per_unit: "Kosten/Einheit"

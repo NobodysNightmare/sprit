@@ -10,9 +10,11 @@
           %dt= t('.distance')
           %dd= "#{human_number @statistics.logged_distance} km"
           %dt= t('.cost')
-          %dd= "#{human_number @statistics.logged_cost} €"
+          - @statistics.logged_costs.each do |name, cost|
+            %dd= "#{name}: #{human_number cost} €"
           %dt= t('.consumption')
-          %dd= "#{human_number @statistics.logged_consumption} l"
+          - @statistics.logged_consumptions.each do |fuel, units|
+            %dd= "#{human_number units} #{fuel.unit}"
           %dt= t('.duration')
           %dd= "#{human_number @statistics.logging_duration} days"
 
@@ -24,9 +26,11 @@
       .panel-body
         %dl
           %dt= t('.cost')
-          %dd= "#{human_number(@statistics.cost_per_km * 100)} ct/km"
+          - @statistics.costs_per_km.each do |name, cost|
+            %dd= "#{name}: #{human_number cost} ct/km"
           %dt= t('.consumption')
-          %dd= "#{human_number(@statistics.consumption_per_km * 100)} l/100 km"
+          - @statistics.consumptions_per_km.each do |fuel, consumption_per_km|
+            %dd= "#{human_number consumption_per_km * 100} #{fuel.unit}/100 km"
 
   .col-md-6.col-sm-12
     .panel.panel-default
@@ -35,8 +39,10 @@
       .panel-body
         %dl
           %dt= t('.cost')
-          %dd= "#{human_number(@statistics.cost_per_day * 365)} €/a"
+          - @statistics.costs_per_day.each do |name, cost|
+            %dd= "#{name}: #{human_number cost} €/a"
           %dt= t('.consumption')
-          %dd= "#{human_number(@statistics.consumption_per_day * 365)} l/a"
+          - @statistics.consumptions_per_day.each do |fuel, consumption_per_day|
+            %dd= "#{human_number consumption_per_day * 365} #{fuel.unit}/a"
           %dt= t('.distance')
           %dd= "#{human_number(@statistics.distance_per_day * 365)} km/a"

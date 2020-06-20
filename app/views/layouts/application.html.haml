@@ -23,9 +23,9 @@
         #sprit-navbar-collapse.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li
-              %a{href: new_fuel_log_path}= I18n.t('titles.new_model', model: FuelLog.model_name.human)
+              %a{href: new_car_log_path}= I18n.t('titles.new_model', model: CarLog.model_name.human)
             %li
-              %a{href: fuel_logs_path}= FuelLog.model_name.human(count: 2)
+              %a{href: car_logs_path}= CarLog.model_name.human(count: 2)
             %li
               %a{href: cars_path}= Car.model_name.human(count: 2)
     .container-fluid

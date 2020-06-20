@@ -1,4 +1,5 @@
 en:
   time:
     formats:
+      default: "%Y-%m-%d, %H:%M"
       time: "%H:%M"

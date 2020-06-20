@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :fuel_logs, only: [:new, :create, :index]
-  resources :service_logs, only: [:new, :create, :index]
+  resources :car_logs, only: [:new, :create, :index]
 
   get '/login', to: 'sessions#new'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:post, :get]

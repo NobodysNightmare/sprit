@@ -22,18 +22,18 @@ de:
       car:
         one: Fahrzeug
         other: Fahrzeuge
-      fuel_log:
-        one: Tankeintrag
-        other: Tankeinträge
+      car_log:
+        one: Aufzeichnung
+        other: Aufzeichnungen
       service_log:
         one: Service-Eintrag
         other: Service-Einträge
     attributes:
-      fuel_log:
+      car_log:
         car_id: Fahrzeug
-        consumption: Verbrauch
         distance: Distanz
-        fuel_price: Spritpreis
-        fuel_used: Spritverbrauch
         time: Zeit
-        total_price: Gesamtpreis
+      refuel:
+        cost: Kosten
+        fuel_price: Spritpreis
+        units_used: Verbrauch

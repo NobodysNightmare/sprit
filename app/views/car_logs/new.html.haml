@@ -1,0 +1,39 @@
+.panel.panel-default
+  .panel-heading
+    = I18n.t('titles.new_model', model: CarLog.model_name.human)
+  .panel-body
+    = form_with model: @log do |f|
+      .form-group
+        = f.label :car_id
+        = f.hidden_field :car_id
+        .form-control-static= @log.car.name
+
+      .form-group
+        = f.label :time
+        = f.text_field :time, class: 'form-control',
+                              type: 'datetime-local',
+                              value: @default_time
+
+      .form-group
+        = f.label :odometer
+        .input-group
+          .input-group-addon km
+          = f.text_field :odometer, class: 'form-control', type: 'number', step: '0.1'
+
+      = f.fields_for :refuels do |refuel_form|
+        %h4= refuel_form.object.fuel.name
+
+        = refuel_form.hidden_field :fuel_id
+        .form-group
+          = refuel_form.label :units_used
+          .input-group
+            .input-group-addon= refuel_form.object.fuel.unit
+            = refuel_form.text_field :units_used, class: 'form-control', type: 'number', step: '0.01'
+
+        .form-group
+          = refuel_form.label :cost
+          .input-group
+            .input-group-addon €
+            = refuel_form.text_field :cost, class: 'form-control', type: 'number', step: '0.01'
+
+      = f.submit I18n.t('buttons.save'), class: 'btn btn-success'

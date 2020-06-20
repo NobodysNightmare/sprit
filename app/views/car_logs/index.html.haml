@@ -1,0 +1,30 @@
+%h1= CarLog.model_name.human(count: 2)
+
+%table.table
+  %thead
+    %tr
+      %th= CarLog.human_attribute_name(:time)
+      %th= CarLog.human_attribute_name(:distance)
+      %th= Refuel.human_attribute_name(:units_used)
+      %th= t('.consumption')
+      %th= t('.cost_per_unit')
+      %th= Refuel.human_attribute_name(:cost)
+
+  - @logs.each do |log|
+    %tr
+      %td= l(log.time)
+      %td= "#{human_number log.distance} km"
+      %td
+        - log.refuels.each do |refuel|
+          .fuel-type= "#{human_number refuel.units_used} #{refuel.unit}"
+      %td
+        - log.refuels.each do |refuel|
+          .fuel-type= "#{human_number(100 * refuel.units_used / log.distance)} #{refuel.unit}/100km"
+      %td
+        - log.refuels.each do |refuel|
+          .fuel-type= "#{human_number(refuel.cost / refuel.units_used, max_precision: 3)} €/#{refuel.unit}"
+      %td
+        - log.refuels.each do |refuel|
+          .fuel-type= "#{human_number refuel.cost} €"
+
+= paginate(@logs)
