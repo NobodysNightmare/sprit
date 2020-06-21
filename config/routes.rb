@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
-  root 'fuel_logs#new'
+  root 'car_logs#new'
 
   resources :cars, only: [:new, :create, :edit, :update, :index, :destroy] do
     member do
