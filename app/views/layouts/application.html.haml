@@ -28,6 +28,8 @@
               %a{href: car_logs_path}= CarLog.model_name.human(count: 2)
             %li
               %a{href: cars_path}= Car.model_name.human(count: 2)
+            %li
+              %a{href: fuels_path}= Fuel.model_name.human(count: 2)
     .container-fluid
       - flash.each do |type, message|
         - if type == 'success'

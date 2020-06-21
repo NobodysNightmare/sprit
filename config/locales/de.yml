@@ -36,6 +36,9 @@ de:
         car_id: Fahrzeug
         distance: Distanz
         time: Zeit
+      fuel:
+        name: Name
+        unit: Einheit
       refuel:
         cost: Kosten
         fuel_price: Spritpreis

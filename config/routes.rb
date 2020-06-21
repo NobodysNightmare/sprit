@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :car_logs, only: [:new, :create, :index]
 
+  resources :fuels, only: [:new, :create, :edit, :update, :index, :destroy]
+
   get '/login', to: 'sessions#new'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:post, :get]
   get '/logout', to: 'sessions#destroy'

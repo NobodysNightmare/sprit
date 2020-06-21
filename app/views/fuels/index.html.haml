@@ -1,0 +1,19 @@
+%h1= Fuel.model_name.human(count: 2)
+
+%table.table
+  %thead
+    %tr
+      %th= Fuel.human_attribute_name(:name)
+      %th= I18n.t('action_column')
+
+  - @fuels.each do |fuel|
+    %tr
+      %td= fuel.name
+      %td
+        %a.btn.btn-default{href: edit_fuel_path(fuel)}
+          = I18n.t('buttons.edit')
+
+.row
+  .col-md-2
+    %a.btn.btn-success{href: new_fuel_path}
+      = I18n.t('buttons.create_model', model: Fuel.model_name.human)

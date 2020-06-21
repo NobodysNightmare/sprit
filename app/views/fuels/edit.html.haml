@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-heading
+    - if @fuel.new_record?
+      = I18n.t('titles.new_model', model: Fuel.model_name.human)
+    - else
+      = I18n.t('titles.edit_model', model: Fuel.model_name.human)
+  .panel-body
+    = form_for @fuel do |f|
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+
+      .form-group
+        = f.label :unit
+        = f.text_field :unit, class: 'form-control'
+
+      = f.submit I18n.t('buttons.save'), class: 'btn btn-success'
+
+- unless @fuel.new_record?
+  .panel.panel-danger
+    .panel-heading
+      = I18n.t('titles.destroy_model', model: Fuel.model_name.human)
+    .panel-body
+      = link_to I18n.t('buttons.delete'), fuel_path(@fuel),
+                method: :delete,
+                class: 'btn btn-danger btn-sm',
+                data: { confirm: I18n.t('confirm_delete_named', name: @fuel.name) }
