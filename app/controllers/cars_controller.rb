@@ -44,7 +44,7 @@ class CarsController < ApplicationController
   end
 
   def summary
-    car = Car.includes(:fuel_logs).find(params[:id])
+    car = Car.includes(:logs).find(params[:id])
     @statistics = CarSummary.new(car)
   end
 
