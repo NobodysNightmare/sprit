@@ -3,11 +3,11 @@ de:
   confirm_delete_named: "'%{name}' wirklich löschen?"
   time_ago: "vor %{time}"
   buttons:
+    add: "Hinzufügen"
     create_model: "%{model} erstellen"
     save: "Speichern"
     edit: "Bearbeiten"
     delete: "Löschen"
-    inverter_readings: "Alle Zählerstände"
   flashs:
     created_model: "%{model} wurde erstellt."
     updated_model: "%{model} wurde gespeichert."
@@ -25,6 +25,9 @@ de:
       car_log:
         one: Aufzeichnung
         other: Aufzeichnungen
+      fuel:
+        one: Treibstoff
+        other: Treibstoffe
       service_log:
         one: Service-Eintrag
         other: Service-Einträge

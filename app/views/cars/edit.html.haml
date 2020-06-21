@@ -25,6 +25,23 @@
       = f.submit I18n.t('buttons.save'), class: 'btn btn-success'
 
 - unless @car.new_record?
+  .panel.panel-default
+    .panel-heading
+      = Fuel.model_name.human(count: 2)
+    %table.table
+      - @car.cars_fuels.includes(:fuel).each do |cf|
+        %tr
+          %td= cf.fuel.name
+          %td= link_to I18n.t('buttons.delete'), car_fuel_path(id: cf.id, car_id: cf.car_id), method: :delete, class: 'btn btn-danger'
+    .panel-footer
+      = form_with url: car_fuels_path(car_id: @car.id), method: :post, class: 'form-inline' do |f|
+        .form-group
+          = f.label :fuel_id
+          = f.collection_select :fuel_id, Fuel.all, :id, :name, {}, class: 'form-control'
+
+        = f.submit I18n.t('buttons.add'), class: 'btn btn-success'
+
+
   .panel.panel-danger
     .panel-heading
       = I18n.t('titles.destroy_model', model: Car.model_name.human)

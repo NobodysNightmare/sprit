@@ -3,11 +3,11 @@ en:
   confirm_delete_named: "Really delete '%{name}'?"
   time_ago: "%{time} ago"
   buttons:
+    add: "Add"
     create_model: "Create %{model}"
     save: "Save"
     edit: "Edit"
     delete: "Delete"
-    inverter_readings: "All Readings"
   flashs:
     created_model: "%{model} was created."
     updated_model: "%{model} was updated."
@@ -26,6 +26,9 @@ en:
       car_log:
         one: Log
         other: Logs
+      fuel:
+        one: Fuel
+        other: Fuels
       service_log:
         one: Service Log
         other: Service Logs

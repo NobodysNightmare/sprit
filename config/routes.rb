@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     member do
       get 'summary'
     end
+
+    resources :fuels, only: [:create, :destroy], controller: 'cars_fuels'
   end
 
   resources :car_logs, only: [:new, :create, :index]
