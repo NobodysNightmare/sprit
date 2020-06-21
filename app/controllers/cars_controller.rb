@@ -18,22 +18,23 @@ class CarsController < ApplicationController
     if car.persisted?
       flash[:success] = I18n.t('flashs.created_model',
                                model: Car.model_name.human)
+      redirect_to action: :edit, id: car.id
     else
       helpers.flash_errors(car.errors)
+      redirect_to action: :index
     end
-    redirect_to action: :index
   end
 
   def update
     car = Car.find(params[:id])
-    if car.update(inverter_params)
+    if car.update(car_params)
       flash[:success] = I18n.t('flashs.updated_model',
                                model: Car.model_name.human)
     else
       helpers.flash_errors(car.errors)
     end
 
-    redirect_to action: :index
+    redirect_to action: :edit, id: car.id
   end
 
   def destroy
