@@ -3,7 +3,7 @@ class CarLogsController < ApplicationController
   HTML_DATETIME_LOCAL = '%Y-%m-%dT%H:%M:00'
 
   def new
-    @default_time = Time.now.strftime(HTML_DATETIME_LOCAL)
+    @default_time = Time.zone.now.strftime(HTML_DATETIME_LOCAL)
     car = Car.last
     @log = car.logs.build
     car.fuels.each do |fuel|
