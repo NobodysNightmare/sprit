@@ -16,6 +16,8 @@ gem 'omniauth-google-oauth2'
 
 gem 'http_accept_language', '~> 2.1'
 
+gem 'httparty'
+
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
