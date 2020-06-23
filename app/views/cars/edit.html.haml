@@ -34,7 +34,7 @@
           %td= cf.fuel.name
           %td
             - if cf.fuel.meterable?
-              = form_with model: cf, url: car_fuel_path(id: cf.id, car_id: @car.id), method: 'patch', class: 'form-inline' do |f|
+              = form_with model: cf, url: car_fuel_path(id: cf.id, car_id: @car.id), method: 'patch', local: true, class: 'form-inline' do |f|
                 .form-group
                   = f.label :meter_serial
                   = f.text_field :meter_serial, class: 'form-control'
@@ -42,7 +42,7 @@
                 = f.submit I18n.t('buttons.save'), class: 'btn btn-success'
           %td= link_to I18n.t('buttons.delete'), car_fuel_path(id: cf.id, car_id: cf.car_id), method: :delete, class: 'btn btn-danger'
     .panel-footer
-      = form_with url: car_fuels_path(car_id: @car.id), method: :post, class: 'form-inline' do |f|
+      = form_with url: car_fuels_path(car_id: @car.id), method: :post, local: true, class: 'form-inline' do |f|
         .form-group
           = f.label :fuel_id
           = f.collection_select :fuel_id, Fuel.all, :id, :name, {}, class: 'form-control'

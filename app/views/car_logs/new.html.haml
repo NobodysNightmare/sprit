@@ -2,7 +2,7 @@
   .panel-heading
     = I18n.t('titles.new_model', model: CarLog.model_name.human)
   .panel-body
-    = form_with model: @log do |f|
+    = form_with model: @log, local: true do |f|
       .form-group
         = f.label :car_id
         = f.hidden_field :car_id
