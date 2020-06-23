@@ -30,9 +30,9 @@ class SyncRefuelFromMeter
   def validate_instance!
     raise ArgumentError, "Couldn't determine serial number of meter to read from." unless @meter_serial
 
-    if @fuel.unit != 'kWh'
-      raise ArgumentError, "Fuel unit expected to be kWh when fetching from a meter. It was #{@fuel.unit}"
-    end
+    return if @fuel.meterable?
+
+    raise ArgumentError, "Passed #{fuel.name} as a fuel, which is not meterable."
   end
 
   def validate_log!(car_log)

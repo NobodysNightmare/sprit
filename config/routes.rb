@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'summary'
     end
 
-    resources :fuels, only: [:create, :destroy], controller: 'cars_fuels'
+    resources :fuels, only: [:create, :update, :destroy], controller: 'cars_fuels'
   end
 
   resources :car_logs, only: [:new, :create, :index]
