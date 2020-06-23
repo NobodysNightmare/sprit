@@ -22,7 +22,10 @@
           .fuel-type= "#{human_number(100 * refuel.units_used / log.distance)} #{refuel.unit}/100km"
       %td
         - log.refuels.each do |refuel|
-          .fuel-type= "#{human_number(refuel.cost / refuel.units_used, max_precision: 3)} €/#{refuel.unit}"
+          - if refuel.units_used.zero?
+            .fuel-type= "#{human_number(0.0, max_precision: 3)} €/#{refuel.unit}"
+          - else
+            .fuel-type= "#{human_number(refuel.cost / refuel.units_used, max_precision: 3)} €/#{refuel.unit}"
       %td
         - log.refuels.each do |refuel|
           .fuel-type= "#{human_number refuel.cost} €"
