@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_202531) do
+ActiveRecord::Schema.define(version: 2020_06_22_223111) do
 
   create_table "car_logs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "time", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_202531) do
   create_table "cars_fuels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "car_id", null: false
     t.integer "fuel_id", null: false
+    t.string "meter_serial"
     t.index ["car_id"], name: "index_cars_fuels_on_car_id"
     t.index ["fuel_id"], name: "index_cars_fuels_on_fuel_id"
   end
