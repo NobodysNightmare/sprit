@@ -1,7 +1,7 @@
 namespace :car_logs do
   desc 'Recalculates distances based on own odometer and odometer of previous ' \
        'odometer in timeline.'
-  task :recalculate_distances do
+  task recalculate_distances: :environment do
     Car.all.each do |car|
       odo = car.start_distance
       car.logs.order(:time).each do |log|
