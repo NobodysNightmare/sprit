@@ -6,8 +6,8 @@ class CarLogsController < ApplicationController
     @default_time = Time.zone.now.strftime(HTML_DATETIME_LOCAL)
     car = Car.last
     @log = car.logs.build
-    car.fuels.each do |fuel|
-      @log.refuels.build(fuel: fuel)
+    car.cars_fuels.manual_metering.each do |cf|
+      @log.refuels.build(fuel_id: cf.fuel_id)
     end
   end
 
@@ -21,11 +21,16 @@ class CarLogsController < ApplicationController
     log.save
 
     if log.persisted?
+      log.car.cars_fuels.automatic_metering.each do |cf|
+        SyncRefuelFromMeterJob.perform_later(cf, log)
+      end
+
       flash[:success] = I18n.t('flashs.created_model',
                                model: CarLog.model_name.human)
     else
       helpers.flash_errors(log.errors)
     end
+
     redirect_to action: :new
   end
 
