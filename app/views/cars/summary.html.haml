@@ -26,8 +26,8 @@
       .panel-body
         %dl
           %dt= t('.cost')
-          - @statistics.costs_per_km.each do |name, cost|
-            %dd= "#{name}: #{human_number cost} ct/km"
+          - @statistics.costs_per_km.each do |name, cost_per_km|
+            %dd= "#{name}: #{human_number(cost_per_km * 100)} ct/km"
           %dt= t('.consumption')
           - @statistics.consumptions_per_km.each do |fuel, consumption_per_km|
             %dd= "#{human_number consumption_per_km * 100} #{fuel.unit}/100 km"
@@ -39,8 +39,8 @@
       .panel-body
         %dl
           %dt= t('.cost')
-          - @statistics.costs_per_day.each do |name, cost|
-            %dd= "#{name}: #{human_number cost} €/a"
+          - @statistics.costs_per_day.each do |name, cost_per_day|
+            %dd= "#{name}: #{human_number(cost_per_day * 365)} €/a"
           %dt= t('.consumption')
           - @statistics.consumptions_per_day.each do |fuel, consumption_per_day|
             %dd= "#{human_number consumption_per_day * 365} #{fuel.unit}/a"
