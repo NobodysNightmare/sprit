@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 6.0'
 gem 'mysql2'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
 gem 'uglifier', '>= 1.3.0'
