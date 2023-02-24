@@ -11,7 +11,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'therubyracer', platforms: :ruby
 gem 'kaminari'
 
-gem 'omniauth', '~> 1.3'
+gem 'omniauth', '~> 2.0'
 gem 'omniauth-google-oauth2'
 
 gem 'http_accept_language', '~> 2.1'
