@@ -10,9 +10,13 @@ Rails.application.routes.draw do
     resources :fuels, only: [:create, :update, :destroy], controller: 'cars_fuels'
   end
 
-  resources :car_logs, only: [:new, :create, :index]
+  resources :car_logs, only: [:new, :create, :index, :show] do
+    resources :refuels, only: [:new]
+  end
 
   resources :fuels, only: [:new, :create, :edit, :update, :index, :destroy]
+
+  resources :refuels, only: [:edit, :create, :update, :destroy]
 
   get '/login', to: 'sessions#new'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:post, :get]

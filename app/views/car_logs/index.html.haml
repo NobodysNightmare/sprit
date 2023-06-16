@@ -13,7 +13,7 @@
   - @logs.each do |log|
     - refuels_by_fuel = log.refuels.group_by(&:fuel)
     %tr
-      %td= l(log.time)
+      %td= link_to l(log.time), car_log_path(log.id)
       %td= "#{human_number log.distance} km"
       %td
         - refuels_by_fuel.each do |fuel, refuels|

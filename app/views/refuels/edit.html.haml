@@ -1,0 +1,34 @@
+.panel.panel-default
+  .panel-heading
+    - if @refuel.new_record?
+      = I18n.t('titles.new_model', model: Refuel.model_name.human)
+    - else
+      = I18n.t('titles.edit_model', model: Refuel.model_name.human)
+  .panel-body
+    = form_for @refuel do |f|
+      = f.hidden_field :car_log_id
+      = f.hidden_field :fuel_id
+
+      .form-group
+        = f.label :units_used
+        .input-group
+          .input-group-addon= f.object.fuel.unit
+          = f.text_field :units_used, class: 'form-control', type: 'number', step: '0.01'
+
+      .form-group
+        = f.label :cost
+        .input-group
+          .input-group-addon €
+          = f.text_field :cost, class: 'form-control', type: 'number', step: '0.01'
+
+      = f.submit I18n.t('buttons.save'), class: 'btn btn-success'
+
+- unless @refuel.new_record?
+  .panel.panel-danger
+    .panel-heading
+      = I18n.t('titles.destroy_model', model: Refuel.model_name.human)
+    .panel-body
+      = link_to I18n.t('buttons.delete'), refuel_path(@refuel),
+                method: :delete,
+                class: 'btn btn-danger btn-sm',
+                data: { confirm: I18n.t('confirm_delete_named', name: "#{@refuel.units_used} #{@refuel.unit}") }

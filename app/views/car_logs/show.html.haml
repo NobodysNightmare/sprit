@@ -1,0 +1,39 @@
+.panel.panel-default
+  .panel-heading
+    = CarLog.model_name.human
+  .panel-body
+    %dl
+      %dt= CarLog.human_attribute_name(:time)
+      %dd= l(@log.time)
+
+      %dt= CarLog.human_attribute_name(:odometer)
+      %dd= "#{human_number @log.odometer} km"
+
+      %dt= CarLog.human_attribute_name(:distance)
+      %dd= "#{human_number @log.distance} km"
+  %table.table
+    %thead
+      %tr
+        %th= Refuel.human_attribute_name(:units_used)
+        %th= t('.consumption')
+        %th= t('.cost_per_unit')
+        %th= Refuel.human_attribute_name(:cost)
+        %th= I18n.t('action_column')
+
+    - @log.refuels.each do |refuel|
+      %tr
+        %td= "#{human_number refuel.units_used} #{refuel.unit}"
+        %td= "#{human_number(100 * refuel.units_used / @log.distance)} #{refuel.unit}/100km"
+        %td
+          - if refuel.units_used.zero?
+            = "#{human_number(0.0, max_precision: 3)} €/#{refuel.unit}"
+          - else
+            = "#{human_number(refuel.cost / refuel.units_used, max_precision: 3)} €/#{refuel.unit}"
+        %td= "#{human_number refuel.cost} €"
+        %td
+          %a.btn.btn-default{href: edit_refuel_path(refuel)}
+            = I18n.t('buttons.edit')
+  .panel-footer
+    - @log.car.fuels.each do |fuel|
+      %a.btn.btn-success{href: new_car_log_refuel_path(@log, fuel_id: fuel.id)}
+        = I18n.t('buttons.refuel', fuel_name: fuel.name)

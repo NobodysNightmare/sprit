@@ -8,6 +8,7 @@ en:
     save: "Save"
     edit: "Edit"
     delete: "Delete"
+    refuel: "Add %{fuel_name} entry"
   flashs:
     created_model: "%{model} was created."
     updated_model: "%{model} was updated."

@@ -15,6 +15,10 @@ class CarLogsController < ApplicationController
     @logs = CarLog.order(time: :desc).includes(refuels: :fuel).page(params[:page])
   end
 
+  def show
+    @log = CarLog.includes(refuels: :fuel).find(params[:id])
+  end
+
   def create
     log = CarLog.new(car_log_params)
     fill_distance!(log)

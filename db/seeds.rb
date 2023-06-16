@@ -8,6 +8,11 @@ car = Car.find_or_create_by!(name: 'Test Car') do |c|
   c.start_date = 1.year.ago
   c.start_distance = 4
   c.start_price = 25_000
+  fuels.each { |f| c.fuels << f }
+end
+
+if car.fuels.empty?
+  fuels.each { |f| car.fuels << f }
 end
 
 if CarLog.count.zero?

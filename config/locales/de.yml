@@ -8,6 +8,7 @@ de:
     save: "Speichern"
     edit: "Bearbeiten"
     delete: "Löschen"
+    refuel: "%{fuel_name}-Eintrag hinzufügen"
   flashs:
     created_model: "%{model} wurde erstellt."
     updated_model: "%{model} wurde gespeichert."
