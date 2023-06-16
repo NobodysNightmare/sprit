@@ -28,9 +28,6 @@ de:
       fuel:
         one: Treibstoff
         other: Treibstoffe
-      service_log:
-        one: Service-Eintrag
-        other: Service-Einträge
     attributes:
       car_log:
         car_id: Fahrzeug

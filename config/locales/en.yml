@@ -29,7 +29,4 @@ en:
       fuel:
         one: Fuel
         other: Fuels
-      service_log:
-        one: Service Log
-        other: Service Logs
     attributes: {}
