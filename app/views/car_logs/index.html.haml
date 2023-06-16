@@ -11,23 +11,24 @@
       %th= Refuel.human_attribute_name(:cost)
 
   - @logs.each do |log|
+    - refuels_by_fuel = log.refuels.group_by(&:fuel)
     %tr
       %td= l(log.time)
       %td= "#{human_number log.distance} km"
       %td
-        - log.refuels.each do |refuel|
-          .fuel-type= "#{human_number refuel.units_used} #{refuel.unit}"
+        - refuels_by_fuel.each do |fuel, refuels|
+          .fuel-type= "#{human_number refuels.sum(&:units_used)} #{fuel.unit}"
       %td
-        - log.refuels.each do |refuel|
-          .fuel-type= "#{human_number(100 * refuel.units_used / log.distance)} #{refuel.unit}/100km"
+        - refuels_by_fuel.each do |fuel, refuels|
+          .fuel-type= "#{human_number(100 * refuels.sum(&:units_used) / log.distance)} #{fuel.unit}/100km"
       %td
-        - log.refuels.each do |refuel|
-          - if refuel.units_used.zero?
-            .fuel-type= "#{human_number(0.0, max_precision: 3)} €/#{refuel.unit}"
+        - refuels_by_fuel.each do |fuel, refuels|
+          - if refuels.sum(&:units_used).zero?
+            .fuel-type= "#{human_number(0.0, max_precision: 3)} €/#{fuel.unit}"
           - else
-            .fuel-type= "#{human_number(refuel.cost / refuel.units_used, max_precision: 3)} €/#{refuel.unit}"
+            .fuel-type= "#{human_number(refuels.sum(&:cost) / refuels.sum(&:units_used), max_precision: 3)} €/#{fuel.unit}"
       %td
-        - log.refuels.each do |refuel|
-          .fuel-type= "#{human_number refuel.cost} €"
+        - refuels_by_fuel.each do |fuel, refuels|
+          .fuel-type= "#{human_number refuels.sum(&:cost)} €"
 
 = paginate(@logs)

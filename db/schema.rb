@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_133700) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_16_133702) do
   create_table "car_logs", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.datetime "time", precision: nil, null: false
     t.decimal "odometer", precision: 7, scale: 1, null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_133700) do
     t.integer "fuel_id", null: false
     t.decimal "units_used", precision: 7, scale: 3, null: false
     t.decimal "cost", precision: 5, scale: 2, null: false
+    t.boolean "automatic", default: false, null: false
     t.index ["car_log_id"], name: "index_refuels_on_car_log_id"
     t.index ["fuel_id"], name: "index_refuels_on_fuel_id"
   end

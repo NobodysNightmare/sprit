@@ -13,7 +13,7 @@ class SyncRefuelFromMeter
     validate_log!(car_log)
 
     result = MeterFetcher.usage_between(@meter_serial, from: previous_time(car_log), to: car_log.time)
-    refuel = car_log.refuels.find_or_initialize_by(fuel_id: @fuel.id)
+    refuel = car_log.refuels.find_or_initialize_by(fuel_id: @fuel.id, automatic: true)
     refuel.update!(units_used: Rational(result.energy, 1000), cost: result.cost)
   end
 
