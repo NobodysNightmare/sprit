@@ -2,18 +2,17 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_223111) do
-
-  create_table "car_logs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "time", null: false
+ActiveRecord::Schema[7.0].define(version: 2020_06_22_223111) do
+  create_table "car_logs", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.datetime "time", precision: nil, null: false
     t.decimal "odometer", precision: 7, scale: 1, null: false
     t.decimal "distance", precision: 7, scale: 1, null: false
     t.integer "car_id", null: false
@@ -21,14 +20,14 @@ ActiveRecord::Schema.define(version: 2020_06_22_223111) do
     t.index ["time"], name: "index_car_logs_on_time"
   end
 
-  create_table "cars", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "cars", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "start_distance", precision: 10, scale: 3, null: false
     t.decimal "start_price", precision: 10, scale: 3, null: false
     t.date "start_date", null: false
   end
 
-  create_table "cars_fuels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "cars_fuels", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "car_id", null: false
     t.integer "fuel_id", null: false
     t.string "meter_serial"
@@ -36,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_06_22_223111) do
     t.index ["fuel_id"], name: "index_cars_fuels_on_fuel_id"
   end
 
-  create_table "fuel_logs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.datetime "time", null: false
+  create_table "fuel_logs", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.datetime "time", precision: nil, null: false
     t.decimal "fuel_used", precision: 10, scale: 3, null: false
     t.decimal "fuel_price", precision: 10, scale: 3, null: false
     t.decimal "distance", precision: 10, scale: 3, null: false
@@ -46,20 +45,12 @@ ActiveRecord::Schema.define(version: 2020_06_22_223111) do
     t.index ["time"], name: "index_fuel_logs_on_time"
   end
 
-  create_table "fuels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "fuels", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "unit", null: false
   end
 
-  create_table "odometer_readings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "time", null: false
-    t.decimal "distance", precision: 10, scale: 3, null: false
-    t.integer "car_id", null: false
-    t.index ["car_id"], name: "index_odometer_readings_on_car_id"
-    t.index ["time"], name: "index_odometer_readings_on_time"
-  end
-
-  create_table "refuels", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "refuels", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "car_log_id", null: false
     t.integer "fuel_id", null: false
     t.decimal "units_used", precision: 7, scale: 3, null: false
@@ -68,8 +59,8 @@ ActiveRecord::Schema.define(version: 2020_06_22_223111) do
     t.index ["fuel_id"], name: "index_refuels_on_fuel_id"
   end
 
-  create_table "service_logs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.datetime "time", null: false
+  create_table "service_logs", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.datetime "time", precision: nil, null: false
     t.string "description", null: false
     t.decimal "cost", precision: 10, scale: 3, null: false
     t.decimal "total_distance", precision: 10, scale: 3, null: false
@@ -78,13 +69,13 @@ ActiveRecord::Schema.define(version: 2020_06_22_223111) do
     t.index ["time"], name: "index_service_logs_on_time"
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "user_id", limit: 100, null: false
     t.string "email", default: "", null: false
     t.string "name", default: "", null: false
     t.boolean "active", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
@@ -92,7 +83,6 @@ ActiveRecord::Schema.define(version: 2020_06_22_223111) do
   add_foreign_key "cars_fuels", "cars", on_delete: :cascade
   add_foreign_key "cars_fuels", "fuels", on_delete: :cascade
   add_foreign_key "fuel_logs", "cars", on_delete: :cascade
-  add_foreign_key "odometer_readings", "cars", on_delete: :cascade
   add_foreign_key "refuels", "car_logs", on_delete: :cascade
   add_foreign_key "refuels", "fuels", on_delete: :cascade
   add_foreign_key "service_logs", "cars", on_delete: :cascade
